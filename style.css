@@ -284,7 +284,21 @@ body {
     object-fit: cover;
     position: relative;
     z-index: 1;
-    filter: brightness(0.9) contrast(1.1);
+    
+    /* --- THE MAGIC FILTER --- */
+    /* 1. Grayscale: Bikin agak hitam-putih biar elegan */
+    /* 2. Sepia & Hue: Ngasih tint warna emas/kecoklatan tipis */
+    /* 3. Brightness & Contrast: Digelapin dikit tapi dibikin tajam */
+    filter: grayscale(60%) sepia(30%) hue-rotate(-15deg) brightness(0.8) contrast(1.2);
+    
+    /* Biar fotonya agak nyatu sama cahaya di background */
+    mix-blend-mode: luminosity; 
+    transition: all 0.5s ease;
+}
+
+/* Interaksi pas fotonya disorot kursor (Reveal warna asli tipis-tipis) */
+.image-wrapper:hover .prince-image {
+    filter: grayscale(20%) sepia(10%) brightness(0.95) contrast(1.1);
 }
 
 .yellow-badge {
